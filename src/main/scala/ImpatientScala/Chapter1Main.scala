@@ -59,11 +59,14 @@ object Chapter1Main extends App {
   println("9. How do you show the first and last character in a String")
   val someString: String = "someString"
   println(someString)
-  println(someString.head, someString(0))
-  println(someString.tail, someString(someString.length - 1))
+  println(someString.head, " or ", someString(0))
+  println(someString.tail, " or ", someString(someString.length - 1))
   println("")
 
   println("10. What do take, drop, takeRight and dropRight do?")
-  println(someString.take(2), someString.drop(2), someString.takeRight(2), someString.dropRight(2))
+  println("Take:", someString.take(2))
+  println("Drop:", someString.drop(2))
+  println("Take Right:", someString.takeRight(2))
+  println("Drop Right:", someString.dropRight(2))
 
 }

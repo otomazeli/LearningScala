@@ -25,7 +25,7 @@ object Chapter2Main extends App {
   println()
 
   println("4-5. Write a function equivilent to the Java Code block shown in book.")
-  def countDown(n: Int) = {
+  def countDown(n: Int): Unit = {
     for( i <- Range(n, 0, -1) )
       println(i)
   }
@@ -53,7 +53,7 @@ object Chapter2Main extends App {
   println()
 
   println("9. Write a recursive version of the function above")
-  def productRec(s: String):Long = {
+  def productRec(s: String): Long = {
     if(s.length == 0) 1
     else s(0) * productRec(s drop 1)
   }
@@ -74,6 +74,5 @@ object Chapter2Main extends App {
     else 1 / n_power(x, -n)
   }
   println(n_power(123, 9))
-  println()
 
 }
