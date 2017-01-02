@@ -12,7 +12,7 @@ import scala.util.Random
 object Chapter1Main extends App {
 
   println("1: Methods applied to Int ( 3 )")
-  Int.getClass.getMethods.map(x => println(x.getName))
+  Int.getClass.getMethods.foreach(x => println(x.getName))
   println("")
 
   println("2. What is the sqrt of 3 when squared == 3?")

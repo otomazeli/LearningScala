@@ -6,13 +6,16 @@ object P01 extends App {
   val list = List(1, 1, 2, 3, 5, 8)
 
   // Built in function
-  println(list.last)
+  println("Input: "+ list)
 
+  // Functional function to find las element
   def lastRecursion[T](list: List[T]): T = list match {
     case x :: Nil => x
     case _ :: xs => lastRecursion(xs)
     case _ => throw new NoSuchElementException("list is empty")
   }
 
-  println(lastRecursion(list))
+  println("Output Direct Solution: ", list.last)
+  println("Output Recursive Function: " + lastRecursion(list))
+  println("Check: ", lastRecursion(list) == 8)
 }

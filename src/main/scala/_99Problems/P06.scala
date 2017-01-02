@@ -9,7 +9,10 @@ object P06 extends App {
   val exampleList: Seq[Int] = List(1, 2, 3, 2, 1)
   val exampleList2: Seq[Int] = List(1, 2)
 
-  def isPalindrome[A](x: TraversableOnce[A]): Boolean = x match {
+  print("Input Ex.1 : " + exampleList)
+  print("Input Ex.2 (2) : " + exampleList2)
+
+  def isPalindrome[A](x: Traversable[A]): Boolean = x match {
     case start +: middle :+ end =>
       // Inspect what is happening within this pattern match
       println(start)
@@ -20,7 +23,7 @@ object P06 extends App {
     case _ => true
   }
 
-  println(isPalindrome(exampleList))
-  println(isPalindrome(exampleList2))
+  println("Output Functional: " + isPalindrome(exampleList))
+  println("Output Functional (2): " + isPalindrome(exampleList2))
 
 }

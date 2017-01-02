@@ -9,8 +9,7 @@ object P05 extends App {
 
   // Reverse a list.
   val list = List(1, 1, 2, 3, 5, 8)
-
-  println(list.reverse)
+  println("Input List: " + list.reverse)
 
   def reverseRecursive[T](list: List[T]): List[T] = {
     @tailrec
@@ -21,13 +20,6 @@ object P05 extends App {
     tail(list, List())
   }
 
-  def sameAs[A](c: Traversable[A], d: Traversable[A]): Boolean =
-    if (c.isEmpty) d.isEmpty
-    else {
-      val (e, f) = d span (c.head !=)
-      if (f.isEmpty) false else sameAs(c.tail, e ++ f.tail)
-    }
-
-  println(reverseRecursive(list))
-  println(sameAs(reverseRecursive(list), list.reverse))
+  println("Output: " + reverseRecursive(list))
+  println("Check: " + reverseRecursive(list) == list.reverse)
 }
