@@ -1,7 +1,7 @@
 package ImpatientScala
 
 /**
-  * Created by dan.dixey on 23/10/2016.
+  * Control Structures and Functions - Chapter 2
   */
 object Chapter2Main extends App {
 
@@ -24,15 +24,17 @@ object Chapter2Main extends App {
   println({}, {}.getClass.toString)
   println()
 
-  println("4-5. Write a function equivilent to the Java Code block shown in book.")
+  println(
+    "4-5. Write a function equivilent to the Java Code block shown in book.")
   def countDown(n: Int): Unit = {
-    for( i <- Range(n, 0, -1) )
+    for (i <- Range(n, 0, -1))
       println(i)
   }
   println(countDown(5))
   println()
 
-  println("6. Write a for loop to calculate the product of all the Unicode codes")
+  println(
+    "6. Write a for loop to calculate the product of all the Unicode codes")
   val s = "Hello"
   var prod = 1.0
   for (i <- s) {
@@ -54,7 +56,7 @@ object Chapter2Main extends App {
 
   println("9. Write a recursive version of the function above")
   def productRec(s: String): Long = {
-    if(s.length == 0) 1
+    if (s.length == 0) 1
     else s(0) * productRec(s drop 1)
   }
   println(productRec("Dan"))
@@ -68,9 +70,9 @@ object Chapter2Main extends App {
   // xn = 1 / x ^ -n if n is negative.
   // Don't use a return statement.
   def n_power(x: BigInt, n: Int): BigInt = {
-    if(n > 0 && n % 2 == 0) n_power(x, n / 2) * n_power(x, n / 2)
-    else if(n > 0) x * n_power(x, n - 1)
-    else if(n == 0) 1
+    if (n > 0 && n % 2 == 0) n_power(x, n / 2) * n_power(x, n / 2)
+    else if (n > 0) x * n_power(x, n - 1)
+    else if (n == 0) 1
     else 1 / n_power(x, -n)
   }
   println(n_power(123, 9))

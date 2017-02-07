@@ -7,7 +7,7 @@ import scala.math.{pow, sqrt}
 import scala.util.Random
 
 /**
-  * Created by dan.dixey on 23/10/2016.
+  * The Basics - Chapter 1
   */
 object Chapter1Main extends App {
 
@@ -48,7 +48,8 @@ object Chapter1Main extends App {
   println(probablePrime(100, Random))
   println("")
 
-  println("8. Convert a BigInt to base 36, identify the location relevent to this in Scaladoc.")
+  println(
+    "8. Convert a BigInt to base 36, identify the location relevent to this in Scaladoc.")
   println(output1.toString(36))
   // Scala doc
   // http://www.scala-lang.org/api/current/#scala.math.BigInt
