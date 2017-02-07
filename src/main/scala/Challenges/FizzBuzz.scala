@@ -8,11 +8,11 @@ object FizzBuzz extends App {
   /**
     * The FizzBuzz Calculator
     */
-  def apply(i : Int): String = {
+  def apply(i: Int): String = {
     i match {
-      case z if z%3 == 0 && z%5 == 0 => "FizzBuzz"
-      case a if a%3 == 0 => "Fizz"
-      case b if b %5 == 0 => "Buzz"
+      case a if a % 3 == 0 && a % 5 == 0 => "FizzBuzz"
+      case b if b % 3 == 0 => "Fizz"
+      case c if c % 5 == 0 => "Buzz"
       case _ => i.toString
     }
   }
@@ -36,11 +36,13 @@ object FizzBuzz extends App {
     * Count the Number of Fizz, Buzz and FizzBuzz in Range
     */
   val rng = (1 to 5124).map(FizzBuzz(_))
-  println(rng.par.
-    filter(_.contains("zz")).
-    groupBy(i => i).
-    mapValues(_.size).
-    // Tuple: (Name, Count, Total Count, Percentage)
-    map(x => (x._1, x._2, rng.length, x._2 * 100.0 / rng.length)))
+  println(
+    rng.par
+      .filter(_.contains("zz"))
+      .groupBy(i => i)
+      .mapValues(_.size)
+      .
+      // Tuple: (Name, Count, Total Count, Percentage)
+      map(x => (x._1, x._2, rng.length, x._2 * 100.0 / rng.length)))
 
 }
