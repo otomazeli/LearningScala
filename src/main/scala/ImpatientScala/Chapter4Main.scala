@@ -22,6 +22,7 @@ object Chapter4Main extends App {
     discounted == Map("Laptop" -> 270.0,
                       "MacBook" -> 180.0,
                       "Amazon Prime" -> 31.5))
+  println()
 
   println(
     "2. Write a program that reads words from a file. Use a mutable map to count how often each word appears. " +
@@ -37,6 +38,7 @@ object Chapter4Main extends App {
     new scala.collection.mutable.HashMap[String, Int]
   data_txt.foreach(w => uw(w) = uw.getOrElse(w, 0) + 1)
   println(uw.toSeq.sortWith(_._2 > _._2).take(20))
+  println()
 
   println(
     "3. Repeat the preceding exercise with an immutable map."
@@ -44,11 +46,13 @@ object Chapter4Main extends App {
   val wordCounts =
     (for (w <- data_txt.distinct) yield (w, data_txt.count(_ == w))).toMap
   println(wordCounts.toSeq.take(20))
+  println()
 
   println(
     "4. Repeat the preceding exercise with a sorted map, so that the words are printed in sorted order."
   )
   println(wordCounts.toSeq.sortWith(_._2 > _._2).take(20))
+  println()
 
   println(
     "6. Define a linked hash map that maps \"Monday\" to java.util.Calendar.MONDAY , and similarly for the " +
@@ -65,6 +69,7 @@ object Chapter4Main extends App {
   )
   println(days.take(3))
   assert(days == (for (d <- days) yield d))
+  println()
 
   println(
     "7.  Print a table of all Java properties. You need to find the length of the longest key before you " +
@@ -73,6 +78,7 @@ object Chapter4Main extends App {
   val props: scala.collection.Map[String, String] = System.getProperties
   val maxLength = props.keys.maxBy(_.length).length
   for ((k, v) <- props) println(k + " " * (maxLength - k.length) + "|" + v)
+  println()
 
   println(
     "8. Write a function minmax(values: Array[Int]) that returns a pair containing the smallest and largest " +
@@ -82,6 +88,7 @@ object Chapter4Main extends App {
   val a8: Array[Int] = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
   println(a8.mkString("< ", ",", " >"), minmax(a8))
   assert(minmax(a8) == (1, 10))
+  println()
 
   println(
     "9. Write a function lteqgt(values: Array[Int], v: Int) that returns a triple containing the counts of values less " +
@@ -91,6 +98,7 @@ object Chapter4Main extends App {
     (values.count(_ < v), values.count(_ == v), values.count(_ > v))
   println(a8.mkString("< ", ",", " >"), lteqgt(a8, 3))
   assert(lteqgt(a8, 3) == (2, 1, 7))
+  println()
 
   println(
     "10. What happens when you zip together two strings, such as 'Hello'.zip('World') ? Come up with a " +

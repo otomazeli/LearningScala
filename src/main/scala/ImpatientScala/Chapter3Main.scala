@@ -26,6 +26,7 @@ object Chapter3Main extends App {
   val a1: Array[Int] = new Array[Int](n)
   for (i <- a1.indices) a1(i) = scala.util.Random.nextInt(n)
   println(a1.mkString("< ", ", ", " >"))
+  println()
 
   println(
     "2. Write a loop that swaps adjacent elements of an array of " +
@@ -37,6 +38,7 @@ object Chapter3Main extends App {
     a2(i) = t
   }
   println(a2.mkString("< ", ", ", " >"))
+  println()
 
   println(
     "3. Repeat the preceding assignment, but produce a new array " +
@@ -53,6 +55,7 @@ object Chapter3Main extends App {
   }
   val a3: Seq[Int] = swapAdj(a1)
   println(a3.mkString("< ", ", ", " >"))
+  println()
 
   println(
     "4. Given an array of integers, produce a new array that contains " +
@@ -69,12 +72,14 @@ object Chapter3Main extends App {
     s"Changed: ${positiveNegativeChanged(a4).mkString("< ", ", ", " >")}")
   println(
     s"UnChanged: ${positiveNegativeUnChanged(a4).mkString("< ", ", ", " >")}")
+  println()
 
   println(
     "5. How do you compute the average of an Array[Double] ?"
   )
   val a5: Array[Double] = Array(1.0, 4.2, 1.1231, 99.1231)
   println(s"Mean: ${a5.sum / a5.length}")
+  println()
 
   println(
     "6. How do you rearrange the elements of an Array[Int] so that they appear in reverse sorted order? " +
@@ -87,6 +92,7 @@ object Chapter3Main extends App {
   println(s"Reversed Order: ${rev6.mkString("< ", ", ", " >")}")
   val a6_2 = a6.toBuffer.sortWith(_ < _)
   println(s"With Buffer: $a6_2")
+  println()
 
   println(
     "7. Write a code snippet that produces all values from an array with duplicates removed?"
@@ -95,6 +101,7 @@ object Chapter3Main extends App {
   println(
     s"Original Array ${a7_1.mkString("< ", ", ", " >")} duplicates removed " +
       s"${a7_1.distinct.mkString("< ", ", ", " >")}")
+  println()
 
   println(
     "8. Rewrite the example at the end of Section 3.4, 'Transforming Arrays,' on Page 32. Collect indexes of the " +
@@ -109,6 +116,7 @@ object Chapter3Main extends App {
   val a8_2_a: Seq[Int] = a8.indices.filter(a8(_) < 0).drop(1)
   for (i <- a8_2_a.indices) a8.remove(a8_2_a(i) - i)
   println(s"Solution 1: $a8_1 Solution 2: $a8")
+  println()
 
   println(
     "9. Make a collection of all the timezones returned by java.util.TimeZone.getAvailableIDs that are in America " +
@@ -119,6 +127,7 @@ object Chapter3Main extends App {
     .map(_.stripPrefix("America/"))
     .sorted
   println(s"American TimeZones: ${a9.take(4).mkString("< ", ", ", " >")}")
+  println()
 
   println(
     "10. Import java.awt.datatransfer._ and make an object of type SystemFlavorMap with the call" +
