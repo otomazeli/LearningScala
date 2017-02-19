@@ -66,9 +66,9 @@ object Chapter5Main extends App {
   )
   class Time3(private var _hrs: Int, private var _min: Int) {
     _min = _min match {
-      case i: Int if i % 60 == 0 => { _hrs += i / 60; 0 }
-      case i: Int if i < 0 => { _hrs += (i / 60 - 1); 60 + i % 60 }
-      case i: Int if i > 59 => { _hrs += i / 60; i % 60 }
+      case i: Int if i % 60 == 0 => _hrs += i / 60; 0
+      case i: Int if i < 0 => _hrs += (i / 60 - 1); 60 + i % 60
+      case i: Int if i > 59 => _hrs += i / 60; i % 60
       case _ => _min
     }
     _hrs = _hrs match {
@@ -77,9 +77,9 @@ object Chapter5Main extends App {
       case _ => _hrs
     }
 
-    def hrs = _hrs
-    def min = _min
-    def before(other: Time3) = {
+    def hrs: Int = _hrs
+    def min: Int = _min
+    def before(other: Time3): Boolean = {
       _hrs < other._hrs || (other._hrs == _hrs && _min < other._min)
     }
   }
@@ -97,9 +97,9 @@ object Chapter5Main extends App {
   class Time4(private var _hrs: Int, private var _min: Int) {
 
     _min = _min match {
-      case i: Int if i % 60 == 0 => { _hrs += i / 60; 0 }
-      case i: Int if i < 0 => { _hrs += (i / 60 - 1); 60 + i % 60 }
-      case i: Int if i > 59 => { _hrs += i / 60; i % 60 }
+      case i: Int if i % 60 == 0 => _hrs += i / 60; 0
+      case i: Int if i < 0 => _hrs += (i / 60 - 1); 60 + i % 60
+      case i: Int if i > 59 => _hrs += i / 60; i % 60
       case _ => _min
     }
 
@@ -109,9 +109,9 @@ object Chapter5Main extends App {
       case _ => _hrs
     }
 
-    def hrs = _hrs
-    def min = _min
-    def before(other: Time4) = {
+    def hrs: Int = _hrs
+    def min: Int = _min
+    def before(other: Time4): Boolean = {
       _hrs < other._hrs || (other._hrs == _hrs && _min < other._min)
     }
 
@@ -139,9 +139,9 @@ object Chapter5Main extends App {
 
     if (_age < 0) _age = 0
 
-    def age = _age
+    def age: Int = _age
     def age_=(newValue: Int) {
-      if (newValue > _age) _age = newValue;
+      if (newValue > _age) _age = newValue
     }
   }
   val Paul = new Person(-2)
@@ -195,7 +195,7 @@ object Chapter5Main extends App {
       this.licencePlate = licencePlate
     }
 
-    def modelYear = _modelYear
+    def modelYear: Int = _modelYear
   }
 
   val VWGolf = new Car("Volkswagen", "Golf")
