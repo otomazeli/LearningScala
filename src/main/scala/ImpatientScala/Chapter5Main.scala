@@ -1,5 +1,7 @@
 package ImpatientScala
 
+import scala.beans.BeanProperty
+
 /**
   * Classes - Chapter 5
   */
@@ -62,6 +64,29 @@ object Chapter5Main extends App {
       "A Time object should be constructed as new Time(hrs, min), where hrs is in military time format " +
       "(between 0 and 23)."
   )
+  class Time3(private var _hrs: Int, private var _min: Int) {
+    _min = _min match {
+      case i: Int if i % 60 == 0 => { _hrs += i / 60; 0 }
+      case i: Int if i < 0 => { _hrs += (i / 60 - 1); 60 + i % 60 }
+      case i: Int if i > 59 => { _hrs += i / 60; i % 60 }
+      case _ => _min
+    }
+    _hrs = _hrs match {
+      case i: Int if i < 0 => 24 + i % 24
+      case i: Int if i > 23 => i % 24
+      case _ => _hrs
+    }
+
+    def hrs = _hrs
+    def min = _min
+    def before(other: Time3) = {
+      _hrs < other._hrs || (other._hrs == _hrs && _min < other._min)
+    }
+  }
+
+  val aT1 = new Time3(-1, 70)
+  val aT2 = new Time3(2, -59)
+  println(s"Time ${aT1.hrs}, ${aT1.min}, ${aT2.before(aT1)}")
   println()
 
   println(
@@ -69,18 +94,58 @@ object Chapter5Main extends App {
       "the number of minutes since midnight (between 0 and 24 × 60 – 1). " +
       "Do not change the public interface. That is, client code should be unaffected by your change."
   )
+  class Time4(private var _hrs: Int, private var _min: Int) {
+
+    _min = _min match {
+      case i: Int if i % 60 == 0 => { _hrs += i / 60; 0 }
+      case i: Int if i < 0 => { _hrs += (i / 60 - 1); 60 + i % 60 }
+      case i: Int if i > 59 => { _hrs += i / 60; i % 60 }
+      case _ => _min
+    }
+
+    _hrs = _hrs match {
+      case i: Int if i < 0 => 24 + i % 24
+      case i: Int if i > 23 => i % 24
+      case _ => _hrs
+    }
+
+    def hrs = _hrs
+    def min = _min
+    def before(other: Time4) = {
+      _hrs < other._hrs || (other._hrs == _hrs && _min < other._min)
+    }
+
+  }
+
+  val aT3 = new Time4(1, -70)
+  val aT4 = new Time4(2, -59)
+  println(s"Time ${aT3.hrs}, ${aT3.min}, ${aT4.before(aT3)}")
   println()
 
   println(
     "5. Make a class Student with read-write JavaBeans properties name (of type String) and id (of type Long)." +
       "What methods are generated? (Use javap to check.) Can you call the JavaBeans getters and setters in Scala?"
   )
+  class Student(@BeanProperty var name: String, @BeanProperty var id: Long)
+  val John = new Student("John", 2457)
+  println(John.id, John.name, John.getId == John.id)
   println()
 
   println(
     "6. In the Person class of Section 5.1 , “Simple Classes and Parameterless Methods,” on page 49 , " +
       "provide a primary constructor that turns negative ages to 0."
   )
+  class Person(private var _age: Int) {
+
+    if (_age < 0) _age = 0
+
+    def age = _age
+    def age_=(newValue: Int) {
+      if (newValue > _age) _age = newValue;
+    }
+  }
+  val Paul = new Person(-2)
+  println(Paul.age)
   println()
 
   println(
@@ -88,6 +153,15 @@ object Chapter5Main extends App {
       "and a last name, such as new Person('Fred Smith') . Supply read-only properties firstName and lastName. " +
       "Should the primary constructor parameter be a var , a val , or a plain parameter? Why?"
   )
+  class Person7(_fullName: String) {
+    val (firstName, lastName) = _fullName.split(" ") match {
+      case Array(x: String, y: String, _ *) => (x, y)
+      case _ => (null, null)
+    }
+  }
+
+  val FredSmith = new Person7("Fred Smith")
+  println(FredSmith.firstName, FredSmith.lastName)
   println()
 
   println(
@@ -97,12 +171,47 @@ object Chapter5Main extends App {
       "plate can also be specified in the constructor. If not, the model year is set to -1 and the license plate" +
       " to the empty string. Which constructor? Why?"
   )
+  class Car(val manufacturer: String, val modelName: String) {
+
+    var licencePlate: String = ""
+    private var _modelYear: Int = -1
+
+    def this(manufacturer: String, modelName: String, modelYear: Int) {
+      this(manufacturer, modelName)
+      this._modelYear = modelYear
+    }
+
+    def this(manufacturer: String, modelName: String, licencePlate: String) {
+      this(manufacturer, modelName)
+      this.licencePlate = licencePlate
+    }
+
+    def this(manufacturer: String,
+             modelName: String,
+             modelYear: Int,
+             licencePlate: String) {
+      this(manufacturer, modelName)
+      this._modelYear = modelYear
+      this.licencePlate = licencePlate
+    }
+
+    def modelYear = _modelYear
+  }
+
+  val VWGolf = new Car("Volkswagen", "Golf")
+  val VWGolf2009 = new Car("Volkswagen", "Golf", 2009)
+  val VWGolfPlate = new Car("Volkswagen", "Golf", 2012, "IM NOT TELLING YOU")
+  println(VWGolfPlate.manufacturer,
+          VWGolfPlate.modelName,
+          VWGolfPlate.modelYear,
+          VWGolfPlate.licencePlate)
   println()
 
   println(
     "9. Reimplement the class of the preceding exercise in Java, C#, or C++ (your choice). How much " +
       "shorter is the Scala class?"
   )
+  println("Python?!")
   println()
 
   println(
@@ -110,5 +219,10 @@ object Chapter5Main extends App {
       "class Employee(val name: String, var salary: Double) {def this() { this('John Q. Public', 0.0) } }" +
       "Rewrite it to use explicit fields and a default primary constructor. Which form do you prefer? Why?"
   )
+  class Employee(val name: String, var salary: Double) {
+    def this() { this("John Q. Public", 0.0) }
+  }
+  // A more syntactic form
+  class EmployeeRewritten(val name: String = "John Q. Public", var salary: Double = 0.0) {}
 
 }
