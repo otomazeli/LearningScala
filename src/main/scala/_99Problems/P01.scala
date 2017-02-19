@@ -1,4 +1,4 @@
-package _99Problem
+package _99Problems
 
 object P01 extends App {
 

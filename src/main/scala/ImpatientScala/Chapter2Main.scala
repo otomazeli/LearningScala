@@ -25,7 +25,7 @@ object Chapter2Main extends App {
   println()
 
   println(
-    "4-5. Write a function equivilent to the Java Code block shown in book.")
+    "4-5. Write a function equivalent to the Java Code block shown in book.")
   def countDown(n: Int): Unit = {
     for (i <- Range(n, 0, -1))
       println(i)

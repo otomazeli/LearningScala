@@ -12,7 +12,7 @@ object P04 extends App {
   def lengthRecursive[T](list: Traversable[T]): Int = {
     // Inner recursive function
     def counter(list: Traversable[T], length: Int): Int = list match {
-      case x :: xs => counter(xs, length + 1)
+      case _ :: xs => counter(xs, length + 1)
       case Nil => length
     }
     counter(list, 0)

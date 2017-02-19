@@ -21,7 +21,7 @@ object P11 extends App {
       .pack(list)
       .map {
         case x :: Nil => x
-        case ll @ (x :: xs) => (ll.length, x)
+        case ll @ (x :: _) => (ll.length, x)
         case Nil => Nil
       }
   }

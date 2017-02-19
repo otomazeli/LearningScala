@@ -16,7 +16,7 @@ object P16 extends App {
     def drop(list: List[T], n: Int, index: Int): List[T] = {
       list match {
         case x :: xs if index % n != 0 => x +: drop(xs, n, index + 1)
-        case x :: xs if index % n == 0 => drop(xs, n, index + 1)
+        case _ :: xs if index % n == 0 => drop(xs, n, index + 1)
         case _ => Nil
       }
     }

@@ -12,8 +12,8 @@ object P03 extends App {
 
   // Function equivalent
   def kthRecursive[T](list: Traversable[T], k: Int): T = list match {
-    case x :: xs if k == 0 => x
-    case x :: xs => kthRecursive(xs, k - 1)
+    case x :: _ if k == 0 => x
+    case _ :: xs => kthRecursive(xs, k - 1)
     case _ => throw new NoSuchElementException
   }
 

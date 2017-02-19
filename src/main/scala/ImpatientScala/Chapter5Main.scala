@@ -15,7 +15,7 @@ object Chapter5Main extends App {
         value += 1
       }
     }
-    def current = value
+    def current: Int = value
   }
   val a1 = new MyCounter(4)
   println(a1.current.toString)

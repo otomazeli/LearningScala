@@ -17,7 +17,7 @@ object P21 extends App {
     @tailrec
     def insertAt(remaining: List[T], first: List[T], cur: Int): List[T] =
       remaining match {
-        case xs if cur == pos => (first :+ t) ++ remaining
+        case _ if cur == pos => (first :+ t) ++ remaining
         case x :: xs => insertAt(xs, first :+ x, cur + 1)
         case _ => Nil
       }
