@@ -14,8 +14,8 @@ class CafeTest extends FlatSpec with Matchers {
 
   "CafeTest.buyCoffees" should "calculate a sum of all the coffees" in  {
     val numOfCoffees = 1000
-    val my_card = new CreditCard
-    val (coffees, charge) = new Cafe().buyCoffees(my_card, numOfCoffees)
+    val myCard = new CreditCard
+    val (coffees, charge) = new Cafe().buyCoffees(myCard, numOfCoffees)
     assert(coffees != null)
     assert(charge != null)
     assert(charge.amount == new Coffee().price * numOfCoffees)

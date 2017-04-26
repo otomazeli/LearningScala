@@ -5,13 +5,7 @@ import scala.annotation.tailrec
 /**
   * Created by dan.dixey on 02/01/2017.
   */
-object P21 extends App {
-
-  // Insert an element at a given position into a list.
-  val inputList = List('a, 'b, 'c, 'd)
-  val expectedResult = List('a, 'new, 'b, 'c, 'd)
-
-  println("Input: " + inputList)
+object P21 {
 
   def insertAt[T](t: T, pos: Int, list: List[T]): List[T] = {
     @tailrec
@@ -23,8 +17,5 @@ object P21 extends App {
       }
     insertAt(list, List(), 0)
   }
-
-  println("Output: " + insertAt('new, 1, inputList))
-  println("Check: " + (insertAt('new, 1, inputList) == expectedResult))
 
 }

@@ -14,9 +14,9 @@ object Chapter4Main extends App {
     "1. Set up a map of prices for a number of gizmos that you covet. Then produce a second map with the " +
       "same keys and the prices at a 10 percent discount."
   )
-  val MyGizmos: Map[String, Int] =
+  val myGizmos: Map[String, Int] =
     Map("Laptop" -> 300, "MacBook" -> 200, "Amazon Prime" -> 35)
-  val discounted = MyGizmos.map { case (x, y) => (x, y * 0.9) }
+  val discounted = myGizmos.map { case (x, y) => (x, y * 0.9) }
   println(discounted)
   assert(
     discounted == Map("Laptop" -> 270.0,
@@ -30,13 +30,13 @@ object Chapter4Main extends App {
       "val in = new java.util.Scanner(new java.io.File('myfile.txt')) while (in.hasNext()) process in.next() " +
       " Or look at Chapter 9 for a Scalaesque way. At the end, print out all words and their counts."
   )
-  val my_stream: InputStream =
+  val myStream: InputStream =
     getClass.getResourceAsStream("/scala_introduction.txt")
-  val data_txt: Array[String] =
-    scala.io.Source.fromInputStream(my_stream).mkString.split("\\s+")
+  val dataTxt: Array[String] =
+    scala.io.Source.fromInputStream(myStream).mkString.split("\\s+")
   val uw: mutable.Map[String, Int] =
     new scala.collection.mutable.HashMap[String, Int]
-  data_txt.foreach(w => uw(w) = uw.getOrElse(w, 0) + 1)
+  dataTxt.foreach(w => uw(w) = uw.getOrElse(w, 0) + 1)
   println(uw.toSeq.sortWith(_._2 > _._2).take(20))
   println()
 
@@ -44,7 +44,7 @@ object Chapter4Main extends App {
     "3. Repeat the preceding exercise with an immutable map."
   )
   val wordCounts =
-    (for (w <- data_txt.distinct) yield (w, data_txt.count(_ == w))).toMap
+    (for (w <- dataTxt.distinct) yield (w, dataTxt.count(_ == w))).toMap
   println(wordCounts.toSeq.take(20))
   println()
 
@@ -84,10 +84,10 @@ object Chapter4Main extends App {
     "8. Write a function minmax(values: Array[Int]) that returns a pair containing the smallest and largest " +
       "values in the array."
   )
-  def minmax(a: Array[Int]) = (a.min, a.max)
+  def minMax(a: Array[Int]) = (a.min, a.max)
   val a8: Array[Int] = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-  println(a8.mkString("< ", ",", " >"), minmax(a8))
-  assert(minmax(a8) == (1, 10))
+  println(a8.mkString("< ", ",", " >"), minMax(a8))
+  assert(minMax(a8) == (1, 10))
   println()
 
   println(

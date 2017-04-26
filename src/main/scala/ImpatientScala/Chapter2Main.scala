@@ -9,15 +9,15 @@ object Chapter2Main extends App {
   // signum actually exists in the standard library
   // therefore will be used to check the function I create
 
-  def my_signum(n: Int): Int = {
+  def mySignum(n: Int): Int = {
     if (n > 0) 1
     else if (n < 0) -1
     else 0
   }
 
-  println(my_signum(5), math.signum(5))
-  println(my_signum(-5), math.signum(-5))
-  println(my_signum(0), math.signum(0))
+  println(mySignum(5), math.signum(5))
+  println(mySignum(-5), math.signum(-5))
+  println(mySignum(0), math.signum(0))
   println()
 
   println("2. What is the value of an empty block and what is its type?")
@@ -48,10 +48,10 @@ object Chapter2Main extends App {
   println()
 
   println("8. Write a function of the method in the previous function.")
-  def my_product(s: String): Long = {
+  def myProduct(s: String): Long = {
     s.foldLeft(1L)(_ * _.toLong)
   }
-  println(my_product("Dan"))
+  println(myProduct("Dan"))
   println()
 
   println("9. Write a recursive version of the function above")
@@ -69,12 +69,12 @@ object Chapter2Main extends App {
   // x0 = 1
   // xn = 1 / x ^ -n if n is negative.
   // Don't use a return statement.
-  def n_power(x: BigInt, n: Int): BigInt = {
-    if (n > 0 && n % 2 == 0) n_power(x, n / 2) * n_power(x, n / 2)
-    else if (n > 0) x * n_power(x, n - 1)
+  def nPower(x: BigInt, n: Int): BigInt = {
+    if (n > 0 && n % 2 == 0) nPower(x, n / 2) * nPower(x, n / 2)
+    else if (n > 0) x * nPower(x, n - 1)
     else if (n == 0) 1
-    else 1 / n_power(x, -n)
+    else 1 / nPower(x, -n)
   }
-  println(n_power(123, 9))
+  println(nPower(123, 9))
 
 }

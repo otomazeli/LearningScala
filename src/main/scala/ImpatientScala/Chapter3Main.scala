@@ -90,17 +90,17 @@ object Chapter3Main extends App {
   util.Sorting.quickSort(a6)
   val rev6 = a6.reverse
   println(s"Reversed Order: ${rev6.mkString("< ", ", ", " >")}")
-  val a6_2 = a6.toBuffer.sortWith(_ < _)
-  println(s"With Buffer: $a6_2")
+  val a62 = a6.toBuffer.sortWith(_ < _)
+  println(s"With Buffer: $a62")
   println()
 
   println(
     "7. Write a code snippet that produces all values from an array with duplicates removed?"
   )
-  val a7_1 = Array(1, 1, 1, 2, 2, 4)
+  val a71 = Array(1, 1, 1, 2, 2, 4)
   println(
-    s"Original Array ${a7_1.mkString("< ", ", ", " >")} duplicates removed " +
-      s"${a7_1.distinct.mkString("< ", ", ", " >")}")
+    s"Original Array ${a71.mkString("< ", ", ", " >")} duplicates removed " +
+      s"${a71.distinct.mkString("< ", ", ", " >")}")
   println()
 
   println(
@@ -111,11 +111,11 @@ object Chapter3Main extends App {
   //  for (j <- 0 until indexes.length) a(j) = a(indexes(j))
   //  a.trimEnd(a.length - indexes.length)
   val a8 = Array(1, 2, -3, -4, -99, 1, 12).toBuffer
-  val a8_1: Seq[Int] =
+  val a81: Seq[Int] =
     for (i <- a8.indices if i <= a8.indexWhere(_ < 0) || a8(i) > 0) yield a8(i)
-  val a8_2_a: Seq[Int] = a8.indices.filter(a8(_) < 0).drop(1)
-  for (i <- a8_2_a.indices) a8.remove(a8_2_a(i) - i)
-  println(s"Solution 1: $a8_1 Solution 2: $a8")
+  val a82a: Seq[Int] = a8.indices.filter(a8(_) < 0).drop(1)
+  for (i <- a82a.indices) a8.remove(a82a(i) - i)
+  println(s"Solution 1: $a81 Solution 2: $a8")
   println()
 
   println(

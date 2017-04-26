@@ -3,6 +3,8 @@
 |----------------|------------|------------|---------|
 | Learning Scala | 02/01/2017 | 23/04/2017 | 0.2     |
 
+[![Build Status](https://travis-ci.org/dandxy89/LearningScala.svg?branch=master)](https://travis-ci.org/dandxy89/LearningScala)
+
 # Overview
 
 Currently working through the "Scala for the Impatient", "Functional Programming in Scala" and also the "99 Problems in Scala".

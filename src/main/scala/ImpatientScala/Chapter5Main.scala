@@ -11,7 +11,7 @@ object Chapter5Main extends App {
     "1. Improve the Counter class in Section 5.1 , 'Simple Classes and Parameterless Methods,' Improve the " +
       "Counter class in Section 5.1 , “Simple Classes and Parameterless Methods,”"
   )
-  class MyCounter(private var value: Int) {
+  class myCounter(private var value: Int) {
     def increment() {
       if (value + 1 <= Int.MaxValue) {
         value += 1
@@ -19,14 +19,14 @@ object Chapter5Main extends App {
     }
     def current: Int = value
   }
-  val a1 = new MyCounter(4)
+  val a1 = new myCounter(4)
   println(a1.current.toString)
   println()
 
   println(
     "2. Write a class BankAccount with methods deposit and withdraw, and a read-only property balance."
   )
-  class BankAccount(private var _balance: Double = 0.0) {
+  class bankAccount(private var _balance: Double = 0.0) {
 
     def deposit(value: Int): Unit = {
       _balance += value
@@ -51,7 +51,7 @@ object Chapter5Main extends App {
     def balance: Double = _balance
 
   }
-  val myBank: BankAccount = new BankAccount
+  val myBank: bankAccount = new bankAccount
   myBank.deposit(1000)
   myBank.withdraw(299.12)
   myBank.withdraw(41.12)
@@ -64,7 +64,7 @@ object Chapter5Main extends App {
       "A Time object should be constructed as new Time(hrs, min), where hrs is in military time format " +
       "(between 0 and 23)."
   )
-  class Time3(private var _hrs: Int, private var _min: Int) {
+  class time3(private var _hrs: Int, private var _min: Int) {
     _min = _min match {
       case i: Int if i % 60 == 0 => _hrs += i / 60; 0
       case i: Int if i < 0 => _hrs += (i / 60 - 1); 60 + i % 60
@@ -79,13 +79,13 @@ object Chapter5Main extends App {
 
     def hrs: Int = _hrs
     def min: Int = _min
-    def before(other: Time3): Boolean = {
+    def before(other: time3): Boolean = {
       _hrs < other._hrs || (other._hrs == _hrs && _min < other._min)
     }
   }
 
-  val aT1 = new Time3(-1, 70)
-  val aT2 = new Time3(2, -59)
+  val aT1 = new time3(-1, 70)
+  val aT2 = new time3(2, -59)
   println(s"Time ${aT1.hrs}, ${aT1.min}, ${aT2.before(aT1)}")
   println()
 
@@ -94,7 +94,7 @@ object Chapter5Main extends App {
       "the number of minutes since midnight (between 0 and 24 × 60 – 1). " +
       "Do not change the public interface. That is, client code should be unaffected by your change."
   )
-  class Time4(private var _hrs: Int, private var _min: Int) {
+  class time4(private var _hrs: Int, private var _min: Int) {
 
     _min = _min match {
       case i: Int if i % 60 == 0 => _hrs += i / 60; 0
@@ -111,14 +111,14 @@ object Chapter5Main extends App {
 
     def hrs: Int = _hrs
     def min: Int = _min
-    def before(other: Time4): Boolean = {
+    def before(other: time4): Boolean = {
       _hrs < other._hrs || (other._hrs == _hrs && _min < other._min)
     }
 
   }
 
-  val aT3 = new Time4(1, -70)
-  val aT4 = new Time4(2, -59)
+  val aT3 = new time4(1, -70)
+  val aT4 = new time4(2, -59)
   println(s"Time ${aT3.hrs}, ${aT3.min}, ${aT4.before(aT3)}")
   println()
 
@@ -127,8 +127,8 @@ object Chapter5Main extends App {
       "What methods are generated? (Use javap to check.) Can you call the JavaBeans getters and setters in Scala?"
   )
   class Student(@BeanProperty var name: String, @BeanProperty var id: Long)
-  val John = new Student("John", 2457)
-  println(John.id, John.name, John.getId == John.id)
+  val john = new Student("John", 2457)
+  println(john.id, john.name, john.getId == john.id)
   println()
 
   println(
@@ -160,8 +160,8 @@ object Chapter5Main extends App {
     }
   }
 
-  val FredSmith = new Person7("Fred Smith")
-  println(FredSmith.firstName, FredSmith.lastName)
+  val fredSmith = new Person7("Fred Smith")
+  println(fredSmith.firstName, fredSmith.lastName)
   println()
 
   println(

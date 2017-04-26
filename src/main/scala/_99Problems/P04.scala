@@ -3,11 +3,7 @@ package _99Problems
 /**
   * Created by dan.dixey on 24/10/2016.
   */
-object P04 extends App {
-
-  // Find the number of elements of a list.
-  val list = List(1, 1, 2, 3, 5, 8)
-  print("Input: " + list)
+object P04 {
 
   def lengthRecursive[T](list: Traversable[T]): Int = {
     // Inner recursive function
@@ -18,6 +14,4 @@ object P04 extends App {
     counter(list, 0)
   }
 
-  print("Output Direct : " + list.length)
-  println("Output Functional : " + lengthRecursive(list))
 }

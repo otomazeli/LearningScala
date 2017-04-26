@@ -39,8 +39,8 @@ class CafeV2Test extends FlatSpec with Matchers {
 
   "CafeV2Test.buy Multiple Drinks" should "purchase many drinks correctly - Lady Grey, Cola, Expresso, Cortado" in {
     val drinksList = List("Lady Grey", "Cola", "Expresso", "Cortado")
-    val my_card = new CreditCard
-    val (drinks, charge) = new CafeV2().buyDrinks(my_card, drinksList)
+    val myCard = new CreditCard
+    val (drinks, charge) = new CafeV2().buyDrinks(myCard, drinksList)
     assert(
       drinks.map(x => x.nameDrink) == List("Lady Grey",
                                            "Cola",
@@ -61,9 +61,9 @@ class CafeV2Test extends FlatSpec with Matchers {
     val expressos = List.fill(100)("Expresso")
     val cortados = List.fill(900)("Cortado")
     val drinksList = List(ladys, colas, expressos, cortados).flatten
-    val my_card = new CreditCard
+    val myCard = new CreditCard
     // Calculate the Drinks bill
-    val (drinks, charge) = new CafeV2().buyDrinks(my_card, drinksList)
+    val (drinks, charge) = new CafeV2().buyDrinks(myCard, drinksList)
     assert(charge.amount == 10040.000000000522)
     val counts =
       drinks.map(x => x.categoryDrink).groupBy(identity).mapValues(_.size)
