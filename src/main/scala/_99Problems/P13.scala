@@ -5,10 +5,10 @@ package _99Problems
   */
 object P13 {
 
-  def encode_direct_span[T](list: List[T]): List[Any] = list match {
+  def encodeDirectSpan[T](list: List[T]): List[Any] = list match {
     case x :: xs =>
       val (consecutiveDuplicates, remaining) = xs.span(_ == x)
-      (consecutiveDuplicates.length + 1, x) +: encode_direct_span(remaining)
+      (consecutiveDuplicates.length + 1, x) +: encodeDirectSpan(remaining)
     case Nil => Nil
   }
 

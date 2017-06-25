@@ -102,7 +102,7 @@ class testAllProblems extends FlatSpec with Matchers {
     val inputList = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
     val expectedResult: Seq[(Int, Symbol)] =
       List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e))
-    assert(P13.encode_direct_span(inputList) == expectedResult)
+    assert(P13.encodeDirectSpan(inputList) == expectedResult)
   }
 
   "P14" should "show..." in {
