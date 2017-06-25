@@ -9,10 +9,10 @@ object Chapter2Main extends App {
   // signum actually exists in the standard library
   // therefore will be used to check the function I create
 
-  def mySignum(n: Int): Int = {
-    if (n > 0) 1
-    else if (n < 0) -1
-    else 0
+  def mySignum(n: Int): Int = n match {
+    case k if k > 0 => 1
+    case m if m < 0 => -1
+    case _          => 0
   }
 
   println(mySignum(5), math.signum(5))
@@ -55,9 +55,9 @@ object Chapter2Main extends App {
   println()
 
   println("9. Write a recursive version of the function above")
-  def productRec(s: String): Long = {
-    if (s.length == 0) 1
-    else s(0) * productRec(s drop 1)
+  def productRec(s: String): Long = s match {
+    case k if k.length == 0  => 1
+    case _                   => s(0) * productRec(s drop 1)
   }
   println(productRec("Dan"))
   println()
@@ -69,11 +69,11 @@ object Chapter2Main extends App {
   // x0 = 1
   // xn = 1 / x ^ -n if n is negative.
   // Don't use a return statement.
-  def nPower(x: BigInt, n: Int): BigInt = {
-    if (n > 0 && n % 2 == 0) nPower(x, n / 2) * nPower(x, n / 2)
-    else if (n > 0) x * nPower(x, n - 1)
-    else if (n == 0) 1
-    else 1 / nPower(x, -n)
+  def nPower(x: BigInt, n: Int): BigInt = n match {
+    case k if k > 0 && k % 2 == 0 => nPower(x, n / 2) * nPower(x, n / 2)
+    case m if m > 0               => x * nPower(x, n - 1)
+    case p if p == 0              => 1
+    case _                        => 1 / nPower(x, -n)
   }
   println(nPower(123, 9))
 

@@ -1,4 +1,4 @@
-package dbiz.chapter1.original
+package fpinscala.chapter1.original
 
 class Coffee {
 

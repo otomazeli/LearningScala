@@ -1,6 +1,7 @@
-package dbiz.chapter1.extended
+package fpinscala.chapter1.extended
 
-import dbiz.chapter1.original.CreditCard
+import fpinscala.chapter1.original.CreditCard
+
 
 case class Charge(creditCard: CreditCard, amount: Double) {
 

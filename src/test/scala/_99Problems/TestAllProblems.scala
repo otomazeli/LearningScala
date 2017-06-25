@@ -2,33 +2,33 @@ package _99Problems
 
 import org.scalatest._
 
-class testAllProblems extends FlatSpec with Matchers {
+class TestAllProblems extends FlatSpec with Matchers {
 
   "P01" should "show ..." in {
     val list = List(1, 1, 2, 3, 5, 8)
-    assert(P01.lastRecursion(list) == list.last)
-    assert(P01.lastRecursion(list) == 8)
+    assert(P01.lastRecursion(list) === list.last)
+    assert(P01.lastRecursion(list) === 8)
   }
 
   "P02" should "show ..." in {
     val list = List(1, 1, 2, 3, 5, 8)
-    assert(P02.penultimate(list) == list.takeRight(2).head)
-    assert(P02.penultimate(list) == list.init.last)
+    assert(P02.penultimate(list) === list.takeRight(2).head)
+    assert(P02.penultimate(list) === list.init.last)
   }
 
   "P03" should "show..." in {
     val list = List(1, 1, 2, 3, 5, 8)
-    P03.kthRecursive(list, 5) == list(5)
+    P03.kthRecursive(list, 5) === list(5)
   }
 
   "P04" should "show..." in {
     val list = List(1, 1, 2, 3, 5, 8)
-    assert(P04.lengthRecursive(list) == list.length)
+    assert(P04.lengthRecursive(list) === list.length)
   }
 
   "P05" should "show..." in {
     val list = List(1, 1, 2, 3, 5, 8)
-    assert(P05.reverseRecursive(list) == list.reverse)
+    assert(P05.reverseRecursive(list) === list.reverse)
   }
 
   "P06" should "show..." in {
@@ -41,13 +41,13 @@ class testAllProblems extends FlatSpec with Matchers {
   "P07" should "show..." in {
     val inputList = List(List(1, 1), 2, List(3, List(5, 8)))
     val expectResult = List(1, 1, 2, 3, 5, 8)
-    assert(P07.flatten(inputList) == expectResult)
+    assert(P07.flatten(inputList) === expectResult)
   }
 
   "P08" should "show..." in {
     val input = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
     val expectedResult = List('a, 'b, 'c, 'a, 'd, 'e)
-    assert(P08.compress(input) == expectedResult)
+    assert(P08.compress(input) === expectedResult)
   }
 
   "P09" should "show..." in {
@@ -58,7 +58,7 @@ class testAllProblems extends FlatSpec with Matchers {
       List('a, 'a),
       List('d),
       List('e, 'e, 'e, 'e))
-    assert(P09.pack(inputList) == expectedResult)
+    assert(P09.pack(inputList) === expectedResult)
   }
 
   "P10" should "show..." in {
@@ -69,7 +69,7 @@ class testAllProblems extends FlatSpec with Matchers {
     // the number of duplicates of the element E.
     val expectedResult: Seq[(Int, Symbol)] =
     List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e))
-    assert(P10.encode(inputList) == expectedResult)
+    assert(P10.encode(inputList) === expectedResult)
   }
 
   "P11" should "show..." in {
@@ -81,7 +81,7 @@ class testAllProblems extends FlatSpec with Matchers {
     List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
     val expectedResult: Seq[Serializable] =
       List((4, 'a), 'b, (2, 'c), (2, 'a), 'd, (4, 'e))
-    assert(P11.encode_modified(inputList) == expectedResult)
+    assert(P11.encode_modified(inputList) === expectedResult)
   }
 
   "P12" should "show..." in {
@@ -91,7 +91,7 @@ class testAllProblems extends FlatSpec with Matchers {
     val inputList = List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e))
     val expectedResult: Seq[Symbol] =
       List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
-    assert(P12.decode(inputList) == expectedResult)
+    assert(P12.decode(inputList) === expectedResult)
   }
 
   "P13" should "show..." in {
@@ -102,7 +102,7 @@ class testAllProblems extends FlatSpec with Matchers {
     val inputList = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
     val expectedResult: Seq[(Int, Symbol)] =
       List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e))
-    assert(P13.encodeDirectSpan(inputList) == expectedResult)
+    assert(P13.encodeDirectSpan(inputList) === expectedResult)
   }
 
   "P14" should "show..." in {
@@ -110,7 +110,7 @@ class testAllProblems extends FlatSpec with Matchers {
     val inputList = List('a, 'b, 'c, 'c, 'd)
     val expectedResult: List[Symbol] =
       List('a, 'a, 'b, 'b, 'c, 'c, 'c, 'c, 'd, 'd)
-    assert(P14.duplicate(inputList) == expectedResult)
+    assert(P14.duplicate(inputList) === expectedResult)
   }
 
   "P15" should "show..." in {
@@ -118,7 +118,7 @@ class testAllProblems extends FlatSpec with Matchers {
     val inputList = List('a, 'b, 'c, 'c, 'd)
     val expectedResult: List[Symbol] =
       List('a, 'a, 'a, 'b, 'b, 'b, 'c, 'c, 'c, 'c, 'c, 'c, 'd, 'd, 'd)
-    assert(P15.duplicateN(3, inputList) == expectedResult)
+    assert(P15.duplicateN(3, inputList) === expectedResult)
   }
 
   "P16" should "show..." in {
@@ -126,7 +126,7 @@ class testAllProblems extends FlatSpec with Matchers {
     val inputList = List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)
     val expectedResult: List[Symbol] =
       List('a, 'b, 'd, 'e, 'g, 'h, 'j, 'k)
-    assert(P16.dropN(3, inputList) == expectedResult)
+    assert(P16.dropN(3, inputList) === expectedResult)
   }
 
   "P17" should "show..." in {
@@ -135,7 +135,7 @@ class testAllProblems extends FlatSpec with Matchers {
     val inputList = List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)
     val expectedResult =
       (List('a, 'b, 'c), List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
-    assert(P17.splitN(3, inputList) == expectedResult)
+    assert(P17.splitN(3, inputList) === expectedResult)
   }
 
   "P18" should "show..." in {
@@ -145,14 +145,14 @@ class testAllProblems extends FlatSpec with Matchers {
     // of the original list. Start counting the elements with 0.
     val inputList = List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)
     val expectedResult = List('d, 'e, 'f, 'g)
-    assert(P18.slice(3, 7, inputList) == expectedResult)
+    assert(P18.slice(3, 7, inputList) === expectedResult)
   }
 
   "P19" should "show..." in {
     // Rotate a list N places to the left.
     val inputList = List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)
     val expectedResult = List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k, 'a, 'b, 'c)
-    assert(P19.rotate(3, inputList) == expectedResult)
+    assert(P19.rotate(3, inputList) === expectedResult)
   }
 
   "P20" should "show..." in {
@@ -161,14 +161,14 @@ class testAllProblems extends FlatSpec with Matchers {
     // Elements are numbered from 0
     val inputList = List('a, 'b, 'c, 'd)
     val expectedResult = (List('a, 'c, 'd), 'b)
-    assert(P20.removeAt(1, inputList) == expectedResult)
+    assert(P20.removeAt(1, inputList) === expectedResult)
   }
 
   "P21" should "show..." in {
     // Insert an element at a given position into a list.
     val inputList = List('a, 'b, 'c, 'd)
     val expectedResult = List('a, 'new, 'b, 'c, 'd)
-    assert(P21.insertAt('new, 1, inputList) == expectedResult)
+    assert(P21.insertAt('new, 1, inputList) === expectedResult)
   }
 }
 

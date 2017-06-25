@@ -1,4 +1,4 @@
-package dbiz.chapter1.extended
+package fpinscala.chapter1.extended
 
 abstract class Drink (name: String, typeDrink: String, value: Double) {
   val nameDrink: String = name

@@ -1,7 +1,7 @@
-package Chapter1
+package fpinscala.chapter1.original
 
-import dbiz.chapter1.original.{Cafe, Coffee, CreditCard}
-import org.scalatest._
+import org.scalatest.{FlatSpec, Matchers}
+
 
 class CafeTest extends FlatSpec with Matchers {
 

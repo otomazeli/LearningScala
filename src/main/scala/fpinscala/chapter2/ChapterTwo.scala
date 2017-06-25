@@ -5,15 +5,15 @@ package fpinscala.chapter2
 /**
   * Documentation Comment
   */
-object myModule {
+object ChapterTwo {
 
   // monomorphic functions
-  def abs(n: Int): Int = {
-    if (n < 0) -n
-    else n
+  def abs(n: Int): Int = n match {
+    case m if m < 0 => -n
+    case _          => n
   }
 
-  private def formatAbs(x: Int) = {
+  private[this] def formatAbs(x: Int) = {
     val msg = "The absolute value of %d is %d"
     msg.format(x, abs(x))
   }
@@ -26,10 +26,10 @@ object myModule {
   // Factorial function
   def factorial(n: Int): Int = {
     @annotation.tailrec
-    def go(n: Int, acc: Int): Int =
-      if (n <= 0) acc
-      else go(n-1, n*acc)
-
+    def go(n: Int, acc: Int): Int = n match {
+      case p if p <= 0  => acc
+      case _            => go(n-1, n*acc)
+    }
     go(n, 1)
   }
 
@@ -40,11 +40,10 @@ object myModule {
       if (n <= 0) x
       else myGo(n - 1, x + b, x)
     }
-
     myGo(n, 1, 0)
   }
 
-  private def formatFactorial(n: Int) = {
+  private[this] def formatFactorial(n: Int) = {
     val msg = "The factorial of %d is %d."
     msg.format(n, factorial(n))
   }

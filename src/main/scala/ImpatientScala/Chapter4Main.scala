@@ -15,7 +15,10 @@ object Chapter4Main extends App {
       "same keys and the prices at a 10 percent discount."
   )
   val myGizmos: Map[String, Int] =
-    Map("Laptop" -> 300, "MacBook" -> 200, "Amazon Prime" -> 35)
+    Map(
+      "Laptop" -> 300,
+      "MacBook" -> 200,
+      "Amazon Prime" -> 35)
   val discounted = myGizmos.map { case (x, y) => (x, y * 0.9) }
   println(discounted)
   assert(
@@ -44,7 +47,9 @@ object Chapter4Main extends App {
     "3. Repeat the preceding exercise with an immutable map."
   )
   val wordCounts =
-    (for (w <- dataTxt.distinct) yield (w, dataTxt.count(_ == w))).toMap
+    (for (w <- dataTxt.distinct)
+      yield (w, dataTxt.count(_ == w))
+      ).toMap
   println(wordCounts.toSeq.take(20))
   println()
 
