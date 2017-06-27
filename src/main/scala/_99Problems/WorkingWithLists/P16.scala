@@ -1,7 +1,7 @@
-package _99Problems
+package _99Problems.WorkingWithLists
 
 /**
-  * Created by dan.dixey on 02/01/2017.
+  * Drop every Nth element from a list.
   */
 object P16 {
 
@@ -10,7 +10,7 @@ object P16 {
       list match {
         case x :: xs if index % n != 0 => x +: drop(xs, n, index + 1)
         case _ :: xs if index % n == 0 => drop(xs, n, index + 1)
-        case _ => Nil
+        case _                         => Nil
       }
     }
 

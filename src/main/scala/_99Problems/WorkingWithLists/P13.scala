@@ -1,7 +1,7 @@
-package _99Problems
+package _99Problems.WorkingWithLists
 
 /**
-  * Created by dan.dixey on 02/01/2017.
+  * Run-length encoding of a list (direct solution).
   */
 object P13 {
 

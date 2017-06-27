@@ -1,7 +1,7 @@
-package _99Problems
+package _99Problems.WorkingWithLists
 
 /**
-  * Created by dan.dixey on 02/01/2017.
+  * Modified run-length encoding.
   */
 object P11 {
 
@@ -9,9 +9,9 @@ object P11 {
     P09
       .pack(list)
       .map {
-        case x :: Nil => x
+        case x :: Nil      => x
         case ll @ (x :: _) => (ll.length, x)
-        case Nil => Nil
+        case Nil           => Nil
       }
   }
 

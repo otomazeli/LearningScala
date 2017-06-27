@@ -1,7 +1,7 @@
-package _99Problems
+package _99Problems.WorkingWithLists
 
 /**
-  * Created by dan.dixey on 02/01/2017.
+  * Rotate a list N places to the left.
   */
 object P19 {
 
