@@ -1,5 +1,6 @@
 package _99Problems
 
+import _99Problems.Arithmetic._
 import _99Problems.WorkingWithLists._
 import org.scalatest._
 
@@ -262,6 +263,26 @@ class TestAllProblems extends FlatSpec with Matchers {
              List('d, 'e),
              List('m, 'n))
     )
+  }
+
+  "P31" should "isPrime" in {
+    val x = new S99Int(7)
+    assert(x.isPrime)
+  }
+
+  "P32" should "gcd(36, 63)" in {
+    val x = new S99Int(7)
+    assert(x.gcd(36, 63) === 9)
+  }
+
+  "P33" should "35.isCoprimeTo(64)" in {
+    val x = new S99Int(35)
+    assert(x.isCoprimeTo(64))
+  }
+
+  "P34" should "10.totient res0: Int = 4" in {
+    val x = new S99Int(10)
+    assert(x.totient == 4)
   }
 
 }
