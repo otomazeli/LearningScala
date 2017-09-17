@@ -19,7 +19,9 @@ object P28 {
     */
   def lsortFreq[T](list: List[List[T]]): List[List[T]] =
     lsort(list)
-      .groupBy(l => l.length).values.toList
+      .groupBy(l => l.length)
+      .values
+      .toList
       .sortWith((l1, l2) => l1.length - l2.length < 0)
       .flatten
 }

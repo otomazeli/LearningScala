@@ -24,8 +24,7 @@ object Chapter2Main extends App {
   println({}, {}.getClass.toString)
   println()
 
-  println(
-    "4-5. Write a function equivalent to the Java Code block shown in book.")
+  println("4-5. Write a function equivalent to the Java Code block shown in book.")
   def countDown(n: Int): Unit = {
     for (i <- Range(n, 0, -1))
       println(i)
@@ -33,9 +32,8 @@ object Chapter2Main extends App {
   println(countDown(5))
   println()
 
-  println(
-    "6. Write a for loop to calculate the product of all the Unicode codes")
-  val s = "Hello"
+  println("6. Write a for loop to calculate the product of all the Unicode codes")
+  val s    = "Hello"
   var prod = 1.0
   for (i <- s) {
     prod = prod * i.toLong
@@ -56,8 +54,8 @@ object Chapter2Main extends App {
 
   println("9. Write a recursive version of the function above")
   def productRec(s: String): Long = s match {
-    case k if k.length == 0  => 1
-    case _                   => s(0) * productRec(s drop 1)
+    case k if k.length == 0 => 1
+    case _                  => s(0) * productRec(s drop 1)
   }
   println(productRec("Dan"))
   println()
@@ -71,9 +69,9 @@ object Chapter2Main extends App {
   // Don't use a return statement.
   def nPower(x: BigInt, n: Int): BigInt = n match {
     case k if k > 0 && k % 2 == 0 => nPower(x, n / 2) * nPower(x, n / 2)
-    case m if m > 0               => x * nPower(x, n - 1)
-    case p if p == 0              => 1
-    case _                        => 1 / nPower(x, -n)
+    case m if m > 0  => x * nPower(x, n - 1)
+    case p if p == 0 => 1
+    case _           => 1 / nPower(x, -n)
   }
   println(nPower(123, 9))
 

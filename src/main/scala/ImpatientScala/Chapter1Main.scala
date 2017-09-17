@@ -16,7 +16,7 @@ object Chapter1Main extends App {
   println()
 
   println("2. What is the sqrt of 3 when squared == 3?")
-  val sqrt3 = sqrt(3)
+  val sqrt3   = sqrt(3)
   val sqrt3sq = pow(sqrt3, 2)
   println(sqrt3, sqrt3sq, sqrt3sq == 3)
   println()
@@ -39,7 +39,7 @@ object Chapter1Main extends App {
 
   println("6. Using BigInt calculate 2**1024")
   val value: BigInt = 2
-  val output1 = value pow 1024
+  val output1       = value pow 1024
   // prints length of numbers
   println(output1.toString.length)
   println()
@@ -48,8 +48,7 @@ object Chapter1Main extends App {
   println(probablePrime(100, Random))
   println()
 
-  println(
-    "8. Convert a BigInt to base 36, identify the location relevent to this in Scaladoc.")
+  println("8. Convert a BigInt to base 36, identify the location relevent to this in Scaladoc.")
   println(output1.toString(36))
   // Scala doc
   // http://www.scala-lang.org/api/current/#scala.math.BigInt

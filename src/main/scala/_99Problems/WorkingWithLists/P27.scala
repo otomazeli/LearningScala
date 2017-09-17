@@ -18,9 +18,7 @@ object P27 {
       groupWith2Elements <- P26.combinations(2, list)
       groupWith3Elements <- P26.combinations(3, list diff groupWith2Elements)
     } yield
-      (groupWith2Elements,
-       groupWith3Elements,
-       list diff groupWith2Elements diff groupWith3Elements)
+      (groupWith2Elements, groupWith3Elements, list diff groupWith2Elements diff groupWith3Elements)
   }
 
   def group[T](list: List[T], groupSizes: List[Int]): List[List[T]] =

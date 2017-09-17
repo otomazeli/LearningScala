@@ -2,7 +2,6 @@ package fpinscala.chapter1.extended
 
 import fpinscala.chapter1.original.CreditCard
 
-
 case class Charge(creditCard: CreditCard, amount: Double) {
 
   def combine(otherCharge: Charge): Charge =

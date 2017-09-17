@@ -1,4 +1,4 @@
-name := "ImpatientScalaAnd99Problems"
+name := "LearningScala"
 version := "1.0"
 scalaVersion := "2.12.3"
 
@@ -13,3 +13,5 @@ libraryDependencies ++= Seq(
 lazy val defaultSettings = Defaults.coreDefaultSettings ++ Seq(
   resolvers += "Typesafe Repo" at "http://repo.typesafe.com/typesafe/releases/"
 )
+
+scalacOptions ++= scalafixScalacOptions.value

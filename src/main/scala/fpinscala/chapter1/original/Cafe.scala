@@ -2,8 +2,7 @@ package fpinscala.chapter1.original
 
 class Cafe {
 
-  def buyCoffees(creditCard: CreditCard,
-                 numOfCoffees: Int): (List[Coffee], Charge) = {
+  def buyCoffees(creditCard: CreditCard, numOfCoffees: Int): (List[Coffee], Charge) = {
     val purchases: List[(Coffee, Charge)] =
       List.fill(numOfCoffees)(buyCoffee(creditCard))
     val (coffees, charges) = purchases.unzip

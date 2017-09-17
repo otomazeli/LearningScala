@@ -15,16 +15,10 @@ object Chapter4Main extends App {
       "same keys and the prices at a 10 percent discount."
   )
   val myGizmos: Map[String, Int] =
-    Map(
-      "Laptop" -> 300,
-      "MacBook" -> 200,
-      "Amazon Prime" -> 35)
+    Map("Laptop" -> 300, "MacBook" -> 200, "Amazon Prime" -> 35)
   val discounted = myGizmos.map { case (x, y) => (x, y * 0.9) }
   println(discounted)
-  assert(
-    discounted == Map("Laptop" -> 270.0,
-                      "MacBook" -> 180.0,
-                      "Amazon Prime" -> 31.5))
+  assert(discounted == Map("Laptop" -> 270.0, "MacBook" -> 180.0, "Amazon Prime" -> 31.5))
   println()
 
   println(
@@ -48,8 +42,7 @@ object Chapter4Main extends App {
   )
   val wordCounts =
     (for (w <- dataTxt.distinct)
-      yield (w, dataTxt.count(_ == w))
-      ).toMap
+      yield (w, dataTxt.count(_ == w))).toMap
   println(wordCounts.toSeq.take(20))
   println()
 
@@ -64,13 +57,13 @@ object Chapter4Main extends App {
       "other weekdays. Demonstrate that the elements are visited in insertion order."
   )
   val days = scala.collection.mutable.LinkedHashMap(
-    "MONDAY" -> java.util.Calendar.MONDAY,
-    "TUESDAY" -> java.util.Calendar.TUESDAY,
+    "MONDAY"    -> java.util.Calendar.MONDAY,
+    "TUESDAY"   -> java.util.Calendar.TUESDAY,
     "WEDNESDAY" -> java.util.Calendar.WEDNESDAY,
-    "THURSDAY" -> java.util.Calendar.THURSDAY,
-    "FRIDAY" -> java.util.Calendar.FRIDAY,
-    "SATURDAY" -> java.util.Calendar.SATURDAY,
-    "SUNDAY" -> java.util.Calendar.SUNDAY
+    "THURSDAY"  -> java.util.Calendar.THURSDAY,
+    "FRIDAY"    -> java.util.Calendar.FRIDAY,
+    "SATURDAY"  -> java.util.Calendar.SATURDAY,
+    "SUNDAY"    -> java.util.Calendar.SUNDAY
   )
   println(days.take(3))
   assert(days == (for (d <- days) yield d))
@@ -81,7 +74,7 @@ object Chapter4Main extends App {
       "can print the table."
   )
   val props: scala.collection.Map[String, String] = System.getProperties
-  val maxLength = props.keys.maxBy(_.length).length
+  val maxLength                                   = props.keys.maxBy(_.length).length
   for ((k, v) <- props) println(k + " " * (maxLength - k.length) + "|" + v)
   println()
 
@@ -90,7 +83,7 @@ object Chapter4Main extends App {
       "values in the array."
   )
   def minMax(a: Array[Int]) = (a.min, a.max)
-  val a8: Array[Int] = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  val a8: Array[Int]        = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
   println(a8.mkString("< ", ",", " >"), minMax(a8))
   assert(minMax(a8) == (1, 10))
   println()
@@ -110,10 +103,8 @@ object Chapter4Main extends App {
       "plausible use case."
   )
   val in10 = "Hello".zip("World")
-  println(
-    s"It returns a Sequence of Tuple with characters from same position in each string: ${in10
-      .take(2)}")
-  println(s"Example Use: Find difference between two strings: ${in10.count(l =>
-    l._1 != l._2)}")
+  println(s"It returns a Sequence of Tuple with characters from same position in each string: ${in10
+    .take(2)}")
+  println(s"Example Use: Find difference between two strings: ${in10.count(l => l._1 != l._2)}")
 
 }

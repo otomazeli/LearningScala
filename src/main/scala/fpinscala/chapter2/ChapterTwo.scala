@@ -27,8 +27,8 @@ object ChapterTwo {
   def factorial(n: Int): Int = {
     @annotation.tailrec
     def go(n: Int, acc: Int): Int = n match {
-      case p if p <= 0  => acc
-      case _            => go(n-1, n*acc)
+      case p if p <= 0 => acc
+      case _           => go(n - 1, n * acc)
     }
     go(n, 1)
   }
@@ -119,7 +119,7 @@ object ChapterTwo {
   }
 
   // Following types to implementations
-  def partial1[A,B,C](a: A, f: (A,B) => C): B => C = (b: B) => f(a, b)
+  def partial1[A, B, C](a: A, f: (A, B) => C): B => C = (b: B) => f(a, b)
   // And we’re done! The result is a higher-order function that takes
   // a function of two arguments and partially applies it.
 

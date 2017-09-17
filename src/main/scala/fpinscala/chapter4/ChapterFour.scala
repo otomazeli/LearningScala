@@ -11,7 +11,7 @@ object ChapterFour {
       case Just(a) => Just(f(a))
     }
 
-    def flatMap[B](f: A => Maybe[B]) = this match {
+    def flatMap[B](f: A => Maybe[B]): Maybe[B] = this match {
       case Absent  => Absent
       case Just(a) => f(a)
     }
@@ -26,7 +26,7 @@ object ChapterFour {
       case _      => this
     }
 
-    def filter(f: A => Boolean) = this match {
+    def filter(f: A => Boolean): Maybe[A] = this match {
       case Just(a) if f(a) => this
       case _               => Absent
     }
@@ -113,11 +113,10 @@ object ChapterFour {
         case _        => this
       }
 
-    def map2[EE >: E, B, C](b: Either2[EE, B])(
-        f: (A, B) => C): Either2[EE, C] = (this, b) match {
-      case (Right2(a), Right2(b)) => Right2(f(a, b))
-      case (Left2(err), _)        => Left2(err)
-      case (_, Left2(err))        => Left2(err)
+    def map2[EE >: E, B, C](b: Either2[EE, B])(f: (A, B) => C): Either2[EE, C] = (this, b) match {
+      case (Right2(a), Right2(cd)) => Right2(f(a, cd))
+      case (Left2(err), _)         => Left2(err)
+      case (_, Left2(err))         => Left2(err)
     }
   }
 
@@ -141,8 +140,7 @@ object ChapterFour {
     iter(as, Nil)
   }
 
-  def traverse3[A, B, C](as: List[A])(
-      f: A => Either2[B, C]): Either2[B, List[C]] = {
+  def traverse3[A, B, C](as: List[A])(f: A => Either2[B, C]): Either2[B, List[C]] = {
     @annotation.tailrec
     def iter(as: List[A], acc: List[C]): Either2[B, List[C]] = as match {
       case h :: t =>
@@ -160,22 +158,21 @@ object ChapterFour {
     *
     * Implement a version of map2 that returns both errors if more than one error occurs
     */
-  def map2b[A, B, C, D](e1: Either2[A, B], e2: Either2[A, C])(
-      f: (B, C) => D): Either2[List[A], D] = (e1, e2) match {
-    case (Right2(b), Right2(c)) => Right2(f(b, c))
-    case _                      => Left2(List(e1, e2) collect { case Left2(error) => error })
-  }
+  def map2b[A, B, C, D](e1: Either2[A, B], e2: Either2[A, C])(f: (B, C) => D): Either2[List[A], D] =
+    (e1, e2) match {
+      case (Right2(b), Right2(c)) => Right2(f(b, c))
+      case _                      => Left2(List(e1, e2) collect { case Left2(error) => error })
+    }
 
   sealed trait Validation[+E, +A] {
-    def isSuccess = this match {
+    def isSuccess: Boolean = this match {
       case Validated(_) => true
       case _            => false
     }
 
-    def isFailure = !isSuccess
+    def isFailure: Boolean = !isSuccess
 
-    def orElse[EE >: E, AA >: A](
-        other: Validation[EE, AA]): Validation[EE, AA] = {
+    def orElse[EE >: E, AA >: A](other: Validation[EE, AA]): Validation[EE, AA] = {
       if (isSuccess) this
       else
         (this, other) match {
@@ -191,15 +188,13 @@ object ChapterFour {
     }
   }
 
-  final case class ErrorTrail[E](errors: List[E])
-      extends Validation[E, Nothing]
+  final case class ErrorTrail[E](errors: List[E]) extends Validation[E, Nothing]
 
   final case class Validated[A](value: A) extends Validation[Nothing, A]
 
   def sequence4[A, B](as: List[Validation[A, B]]): Validation[A, List[B]] = {
     @annotation.tailrec
-    def iter(as: List[Validation[A, B]],
-             acc: Validation[A, List[B]]): Validation[A, List[B]] = {
+    def iter(as: List[Validation[A, B]], acc: Validation[A, List[B]]): Validation[A, List[B]] = {
       as match {
         case Nil => acc.map(_.reverse)
         case ErrorTrail(headErrors) :: t =>

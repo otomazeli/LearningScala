@@ -22,7 +22,7 @@ object Chapter3Main extends App {
   println(
     "1. Write a code snippet that sets a to an array of n random integers" +
       " between 0 (inclusive) and n (exclusive).")
-  val n: Int = 20
+  val n: Int         = 20
   val a1: Array[Int] = new Array[Int](n)
   for (i <- a1.indices) a1(i) = scala.util.Random.nextInt(n)
   println(a1.mkString("< ", ", ", " >"))
@@ -68,10 +68,8 @@ object Chapter3Main extends App {
   def positiveNegativeUnChanged(a: Array[Int]): Array[Int] = {
     a.filter(_ > 0) ++ a.filter(_ <= 0)
   }
-  println(
-    s"Changed: ${positiveNegativeChanged(a4).mkString("< ", ", ", " >")}")
-  println(
-    s"UnChanged: ${positiveNegativeUnChanged(a4).mkString("< ", ", ", " >")}")
+  println(s"Changed: ${positiveNegativeChanged(a4).mkString("< ", ", ", " >")}")
+  println(s"UnChanged: ${positiveNegativeUnChanged(a4).mkString("< ", ", ", " >")}")
   println()
 
   println(
@@ -139,8 +137,7 @@ object Chapter3Main extends App {
   val flavors: SystemFlavorMap =
     SystemFlavorMap.getDefaultFlavorMap.asInstanceOf[SystemFlavorMap]
   val flavorBuffer: mutable.Buffer[String] = JavaConverters
-    .asScalaBufferConverter(
-      flavors.getNativesForFlavor(DataFlavor.imageFlavor))
+    .asScalaBufferConverter(flavors.getNativesForFlavor(DataFlavor.imageFlavor))
     .asScala
   println(s"First four flavors: ${flavorBuffer.take(4)}")
 

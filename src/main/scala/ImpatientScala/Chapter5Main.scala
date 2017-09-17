@@ -12,7 +12,7 @@ object Chapter5Main extends App {
       "Counter class in Section 5.1 , “Simple Classes and Parameterless Methods,”"
   )
   class myCounter(private var value: Int) {
-    def increment() {
+    def increment(): Unit = {
       if (value + 1 <= Int.MaxValue) {
         value += 1
       }
@@ -67,14 +67,14 @@ object Chapter5Main extends App {
   class time3(private var _hrs: Int, private var _min: Int) {
     _min = _min match {
       case i: Int if i % 60 == 0 => _hrs += i / 60; 0
-      case i: Int if i < 0 => _hrs += (i / 60 - 1); 60 + i % 60
+      case i: Int if i < 0  => _hrs += (i / 60 - 1); 60 + i % 60
       case i: Int if i > 59 => _hrs += i / 60; i % 60
-      case _ => _min
+      case _                => _min
     }
     _hrs = _hrs match {
-      case i: Int if i < 0 => 24 + i % 24
+      case i: Int if i < 0  => 24 + i % 24
       case i: Int if i > 23 => i % 24
-      case _ => _hrs
+      case _                => _hrs
     }
 
     def hrs: Int = _hrs
@@ -98,15 +98,15 @@ object Chapter5Main extends App {
 
     _min = _min match {
       case i: Int if i % 60 == 0 => _hrs += i / 60; 0
-      case i: Int if i < 0 => _hrs += (i / 60 - 1); 60 + i % 60
+      case i: Int if i < 0  => _hrs += (i / 60 - 1); 60 + i % 60
       case i: Int if i > 59 => _hrs += i / 60; i % 60
-      case _ => _min
+      case _                => _min
     }
 
     _hrs = _hrs match {
-      case i: Int if i < 0 => 24 + i % 24
+      case i: Int if i < 0  => 24 + i % 24
       case i: Int if i > 23 => i % 24
-      case _ => _hrs
+      case _                => _hrs
     }
 
     def hrs: Int = _hrs
@@ -140,7 +140,7 @@ object Chapter5Main extends App {
     if (_age < 0) _age = 0
 
     def age: Int = _age
-    def age_=(newValue: Int) {
+    def age_=(newValue: Int): Unit = {
       if (newValue > _age) _age = newValue
     }
   }
@@ -155,8 +155,8 @@ object Chapter5Main extends App {
   )
   class Person7(_fullName: String) {
     val (firstName, lastName) = _fullName.split(" ") match {
-      case Array(x: String, y: String, _ *) => (x, y)
-      case _ => (null, null)
+      case Array(x: String, y: String, _*) => (x, y)
+      case _                               => (null, null)
     }
   }
 
@@ -173,7 +173,7 @@ object Chapter5Main extends App {
   )
   class Car(val manufacturer: String, val modelName: String) {
 
-    var licencePlate: String = ""
+    var licencePlate: String    = ""
     private var _modelYear: Int = -1
 
     def this(manufacturer: String, modelName: String, modelYear: Int) {
@@ -186,10 +186,7 @@ object Chapter5Main extends App {
       this.licencePlate = licencePlate
     }
 
-    def this(manufacturer: String,
-             modelName: String,
-             modelYear: Int,
-             licencePlate: String) {
+    def this(manufacturer: String, modelName: String, modelYear: Int, licencePlate: String) {
       this(manufacturer, modelName)
       this._modelYear = modelYear
       this.licencePlate = licencePlate
@@ -198,8 +195,8 @@ object Chapter5Main extends App {
     def modelYear: Int = _modelYear
   }
 
-  val VWGolf = new Car("Volkswagen", "Golf")
-  val VWGolf2009 = new Car("Volkswagen", "Golf", 2009)
+  val VWGolf      = new Car("Volkswagen", "Golf")
+  val VWGolf2009  = new Car("Volkswagen", "Golf", 2009)
   val VWGolfPlate = new Car("Volkswagen", "Golf", 2012, "IM NOT TELLING YOU")
   println(VWGolfPlate.manufacturer,
           VWGolfPlate.modelName,

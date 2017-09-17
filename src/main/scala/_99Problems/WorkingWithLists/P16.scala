@@ -10,7 +10,7 @@ object P16 {
       list match {
         case x :: xs if index % n != 0 => x +: drop(xs, n, index + 1)
         case _ :: xs if index % n == 0 => drop(xs, n, index + 1)
-        case _                         => Nil
+        case _ => Nil
       }
     }
 
