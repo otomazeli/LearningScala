@@ -54,21 +54,21 @@ object ChapterTwo {
     msg.format(name, n, f(n))
   }
 
-  def main(args: Array[String]): Unit = {
-    println(formatResult("Absolute", -42, abs))
-    println(formatResult("Absolute", 7, factorial))
-
-    /*
-     * Calling HOFs with anonymous functions
-     */
-    val strArray = Array("Dan", "Dixey", "Scala")
-    println(strArray(findFirst(strArray, (s: String) => s.equals("Scala"))))
-
-    /* Alternative */
-    val intArray = Array(1, 3, 4, 5, 100)
-    println(intArray(findFirst(intArray, 100.equals)))
-
-  }
+  //  def main(args: Array[String]): Unit = {
+  //    println(formatResult("Absolute", -42, abs))
+  //    println(formatResult("Absolute", 7, factorial))
+  //
+  //    /*
+  //     * Calling HOFs with anonymous functions
+  //     */
+  //    val strArray = Array("Dan", "Dixey", "Scala")
+  //    println(strArray(findFirst(strArray, (s: String) => s.equals("Scala"))))
+  //
+  //    /* Alternative */
+  //    val intArray = Array(1, 3, 4, 5, 100)
+  //    println(intArray(findFirst(intArray, 100.equals)))
+  //
+  //  }
 
   // Monomorphic function to find a String in an array
   def monoFindFirst(ss: Array[String], key: String): Int = {

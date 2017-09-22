@@ -3,7 +3,7 @@ package Challenges
 /**
   * Well-known challenge - FizzBuzz
   */
-object FizzBuzz extends App {
+object FizzBuzz {
 
   /**
     * The FizzBuzz Calculator

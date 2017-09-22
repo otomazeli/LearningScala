@@ -3,7 +3,7 @@ package ImpatientScala
 /**
   * Control Structures and Functions - Chapter 2
   */
-object Chapter2Main extends App {
+object Chapter2Main {
 
   println("1. Write a function that computes the signum of a number")
   // signum actually exists in the standard library

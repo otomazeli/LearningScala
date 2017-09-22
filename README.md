@@ -31,6 +31,8 @@ I typically do this whilst flying / travelling about. [Link](http://horstmann.co
 
 # Project Euler
 
+![Project Euler Progress](https://projecteuler.net/profile/dandxy89.png)
+
 *   The problems can be found here: [Link](https://projecteuler.net/problem=1)
 *   [Implementation](src/main/scala/ProjectEuler)
 *   [Tests](src/test/scala/ProjectEuler)

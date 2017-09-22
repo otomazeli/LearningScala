@@ -9,15 +9,15 @@ import scala.util.Random
 /**
   * The Basics - Chapter 1
   */
-object Chapter1Main extends App {
+object Chapter1Main {
 
   println("1: Methods applied to Int ( 3 )")
   Int.getClass.getMethods.foreach(x => println(x.getName))
   println()
 
   println("2. What is the sqrt of 3 when squared == 3?")
-  val sqrt3   = sqrt(3)
-  val sqrt3sq = pow(sqrt3, 2)
+  val sqrt3: Double   = sqrt(3)
+  val sqrt3sq: Double = pow(sqrt3, 2)
   println(sqrt3, sqrt3sq, sqrt3sq == 3)
   println()
 
@@ -38,8 +38,8 @@ object Chapter1Main extends App {
   println()
 
   println("6. Using BigInt calculate 2**1024")
-  val value: BigInt = 2
-  val output1       = value pow 1024
+  val value: BigInt   = 2
+  val output1: BigInt = value pow 1024
   // prints length of numbers
   println(output1.toString.length)
   println()

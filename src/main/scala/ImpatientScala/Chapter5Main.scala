@@ -5,7 +5,7 @@ import scala.beans.BeanProperty
 /**
   * Classes - Chapter 5
   */
-object Chapter5Main extends App {
+object Chapter5Main {
 
   println(
     "1. Improve the Counter class in Section 5.1 , 'Simple Classes and Parameterless Methods,' Improve the " +

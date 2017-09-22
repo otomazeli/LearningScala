@@ -9,11 +9,11 @@ import scala.collection.{JavaConverters, mutable}
 /**
   * Working with Arrays - Chapter 3
   */
-object Chapter3Main extends App {
+object Chapter3Main {
 
   println("Prelims.")
   // Multi-dimensional arrays
-  val matrix = Array.ofDim[Double](3, 4)
+  val matrix: Array[Array[Double]] = Array.ofDim[Double](3, 4)
   // Ragged Arrays
   val triangle = new Array[Array[Int]](10)
   for (i <- triangle.indices)
@@ -86,9 +86,9 @@ object Chapter3Main extends App {
   val a6: Array[Int] = Array(3, 2, 99, 4, 5, 6)
   // Quicksort the Array
   util.Sorting.quickSort(a6)
-  val rev6 = a6.reverse
+  val rev6: Array[Int] = a6.reverse
   println(s"Reversed Order: ${rev6.mkString("< ", ", ", " >")}")
-  val a62 = a6.toBuffer.sortWith(_ < _)
+  val a62: mutable.Buffer[Int] = a6.toBuffer.sortWith(_ < _)
   println(s"With Buffer: $a62")
   println()
 
@@ -108,7 +108,7 @@ object Chapter3Main extends App {
   )
   //  for (j <- 0 until indexes.length) a(j) = a(indexes(j))
   //  a.trimEnd(a.length - indexes.length)
-  val a8 = Array(1, 2, -3, -4, -99, 1, 12).toBuffer
+  val a8: mutable.Buffer[Int] = Array(1, 2, -3, -4, -99, 1, 12).toBuffer
   val a81: Seq[Int] =
     for (i <- a8.indices if i <= a8.indexWhere(_ < 0) || a8(i) > 0) yield a8(i)
   val a82a: Seq[Int] = a8.indices.filter(a8(_) < 0).drop(1)
