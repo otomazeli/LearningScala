@@ -4,7 +4,7 @@ package Kata
 
 case class SKU(sku: String) extends AnyVal
 
-trait CustomValue {
+sealed trait CustomValue {
 
   def value: Int
 
@@ -21,7 +21,7 @@ case class LoyaltyPoints(value: Int) extends CustomValue
 case class BasketSize(sku: SKU, count: Int)
 case class MissingItemException(msg: String) extends Exception(msg)
 
-trait Discounts {
+sealed trait Discounts {
   def findPrice(n: Int, unitCost: Price): Option[(Price, LoyaltyPoints)]
 }
 
@@ -37,7 +37,7 @@ case class MultiBuy(q: Int, p: Price) extends Discounts {
   }
 }
 
-trait StoreItem {
+sealed trait StoreItem {
   def calculatePrice(n: Int, discount: Option[Discounts]): Option[(Price, LoyaltyPoints)]
 }
 
@@ -57,7 +57,7 @@ case class MissingItem(sku: SKU) extends StoreItem {
   override def calculatePrice(n: Int, d: Option[Discounts]): Option[(Price, LoyaltyPoints)] = None
 }
 
-trait InventoryService {
+sealed trait InventoryService {
   def get_item(sku: SKU): Option[StoreItem]
 }
 
